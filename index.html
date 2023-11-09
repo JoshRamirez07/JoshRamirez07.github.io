@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fade in Image</title>
+  <style>
+    body {
+      background-color: white; 
+      text-align: center;
+    }
+
+    img {
+      display: none;
+      width: 50%;
+    }
+
+    .show {
+      display: block;
+      animation: fadeIn 5s;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 onclick="fadeIn()">COOL WEBSITE</h1>
+  
+  <img id="image" src="https://github.com/JoshRamirez07/JoshRamirez07.github.io/raw/main/images/img1.HEIC">
+
+  <script>
+    function fadeIn() {
+      document.getElementById("image").className = "show";
+    }
+  </script>
+
+</body>
+</html>
