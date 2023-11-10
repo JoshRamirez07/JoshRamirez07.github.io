@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Basic Snake HTML Game</title>
+  <title>Cool Website</title>
   <meta charset="UTF-8">
   <style>
   html, body {
@@ -32,7 +32,7 @@ var count = 0;
 var snake = {
   x: 160,
   y: 160,
-  dx: grid,
+  dx: grid / 2, // Adjusted the snake speed
   dy: 0,
   cells: [],
   maxCells: 4
@@ -54,7 +54,7 @@ function getRandomInt(min, max) {
 function loop() {
   requestAnimationFrame(loop);
 
-  if (++count < 4) {
+  if (++count < 8) { // Adjusted the frame rate
     return;
   }
 
@@ -101,7 +101,7 @@ function loop() {
         snake.y = 160;
         snake.cells = [];
         snake.maxCells = 4;
-        snake.dx = grid;
+        snake.dx = grid / 2; // Adjusted the snake speed
         snake.dy = 0;
 
         apple.x = getRandomInt(0, 20) * grid;
@@ -113,16 +113,16 @@ function loop() {
 
 document.addEventListener('keydown', function (e) {
   if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid;
+    snake.dx = -grid / 2; // Adjusted the snake speed
     snake.dy = 0;
   } else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
+    snake.dy = -grid / 2; // Adjusted the snake speed
     snake.dx = 0;
   } else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid;
+    snake.dx = grid / 2; // Adjusted the snake speed
     snake.dy = 0;
   } else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid;
+    snake.dy = grid / 2; // Adjusted the snake speed
     snake.dx = 0;
   }
 });
