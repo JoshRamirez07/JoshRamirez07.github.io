@@ -58,6 +58,16 @@
     apple.image.src = 'images/image1.jpg';
     snakeBodyImage.src = 'images/image2.jpg';
 
+    function resizeImages() {
+      apple.image.width = grid;
+      apple.image.height = grid;
+
+      snakeBodyImage.width = grid;
+      snakeBodyImage.height = grid;
+    }
+
+    resizeImages();
+
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     }
@@ -94,16 +104,16 @@
       }
 
       // Draw the apple image
-      context.drawImage(apple.image, apple.x, apple.y, grid - 1, grid - 1);
+      context.drawImage(apple.image, apple.x, apple.y, grid, grid);
 
       snake.cells.forEach(function (cell, index) {
         // Draw snake body image
-        context.drawImage(snakeBodyImage, cell.x, cell.y, grid - 1, grid - 1);
+        context.drawImage(snakeBodyImage, cell.x, cell.y, grid, grid);
 
         if (cell.x === apple.x && cell.y === apple.y) {
           snake.maxCells++;
-          apple.x = getRandomInt(0, 20) * grid;
-          apple.y = getRandomInt(0, 20) * grid;
+          apple.x = getRandomInt(0, canvas.width / grid) * grid;
+          apple.y = getRandomInt(0, canvas.height / grid) * grid;
         }
 
         for (var i = index + 1; i < snake.cells.length; i++) {
@@ -115,8 +125,8 @@
             snake.dx = grid;
             snake.dy = 0;
 
-            apple.x = getRandomInt(0, 20) * grid;
-            apple.y = getRandomInt(0, 20) * grid;
+            apple.x = getRandomInt(0, canvas.width / grid) * grid;
+            apple.y = getRandomInt(0, canvas.height / grid) * grid;
           }
         }
       });
