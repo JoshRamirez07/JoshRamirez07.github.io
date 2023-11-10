@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cool Website</title>
+  <title>Basic Snake HTML Game</title>
   <meta charset="UTF-8">
   <style>
   html, body {
@@ -21,25 +21,25 @@
   </style>
 </head>
 <body>
-<canvas width="400" height="400" id="game"></canvas>
+<canvas width="200" height="200" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
-var grid = 20;
+var grid = 10;
 var count = 0;
 
 var snake = {
-  x: 160,
-  y: 160,
-  dx: grid / 2, // Adjusted the snake speed
+  x: 100,
+  y: 100,
+  dx: grid,
   dy: 0,
   cells: [],
   maxCells: 4
 };
 var apple = {
-  x: 320,
-  y: 320,
+  x: 50,
+  y: 50,
   image: new Image()
 };
 var snakeBodyImage = new Image();
@@ -54,7 +54,7 @@ function getRandomInt(min, max) {
 function loop() {
   requestAnimationFrame(loop);
 
-  if (++count < 8) { // Adjusted the frame rate
+  if (++count < 4) {
     return;
   }
 
@@ -97,11 +97,11 @@ function loop() {
 
     for (var i = index + 1; i < snake.cells.length; i++) {
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
+        snake.x = 100;
+        snake.y = 100;
         snake.cells = [];
         snake.maxCells = 4;
-        snake.dx = grid / 2; // Adjusted the snake speed
+        snake.dx = grid;
         snake.dy = 0;
 
         apple.x = getRandomInt(0, 20) * grid;
@@ -113,16 +113,16 @@ function loop() {
 
 document.addEventListener('keydown', function (e) {
   if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid / 2; // Adjusted the snake speed
+    snake.dx = -grid;
     snake.dy = 0;
   } else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid / 2; // Adjusted the snake speed
+    snake.dy = -grid;
     snake.dx = 0;
   } else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid / 2; // Adjusted the snake speed
+    snake.dx = grid;
     snake.dy = 0;
   } else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid / 2; // Adjusted the snake speed
+    snake.dy = grid;
     snake.dx = 0;
   }
 });
